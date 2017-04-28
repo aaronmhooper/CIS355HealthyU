@@ -1,0 +1,18 @@
+﻿@model CIS355.Models.UserHomeViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+@Html.AntiForgeryToken()
+<h1>Hello, @ViewBag.user</h1>
+<h2>You Have @ViewBag.points Points!</h2>
+<br />
+<br />
+<form action="/Transactions/Index">
+    <button>Transactions</button>
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CIS355.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @if (ViewBag.isAdmin == "Yes")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.Actvity.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsVerified)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (ViewBag.isAdmin == "Yes")
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Actvity.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsVerified)
+        </td>
+        @if (ViewBag.isAdmin == "Yes")
+        {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+        }
+    </tr>
+}
+
+</table>
